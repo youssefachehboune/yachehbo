@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {AiFillEve, AiFillEye, AiFillGithub } from 'react-icons/ai';
-import { animate, motion } from 'framer-motion';
+import {AiFillEye, AiFillGithub } from 'react-icons/ai';
+import { motion } from 'framer-motion';
 
 import { AppWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
