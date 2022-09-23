@@ -11,6 +11,9 @@ import about02 from '../assets/about02.png';
 import about03 from '../assets/about03.png';
 import about04 from '../assets/about04.png';
 
+import whatsapp from '../assets/whatsapp.png';
+import mail from '../assets/mail.png';
+
 const Img = {
   figma,
   python,
@@ -21,7 +24,9 @@ const Img = {
   about01,
   about02,
   about03,
-  about04
+  about04,
+  whatsapp,
+  mail
 };
 
 export default Img;
