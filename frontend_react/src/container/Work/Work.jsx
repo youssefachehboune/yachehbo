@@ -45,7 +45,7 @@ const Work = () => {
     <>
       <motion.h2 
         className="head-text"
-        whileInView={{ x: [100, -1, 0], opacity: [0, 1] }}
+        whileInView={{ x: [-100, 1, 0], opacity: [0, 1] }}
         transition={{ duration: 2, type: 'tween' }}
         >
         My Creative
