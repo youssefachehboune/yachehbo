@@ -27,7 +27,11 @@ const Skills = () => {
 
   return (
     <>
-      <h2 className="head-text">Skills & <span>Experience</span></h2>
+      <motion.h2 className="head-text" 
+        whileInView={{ x: [-100, 1, 0], opacity: [0, 1] }}
+        transition={{ duration: 2, type: 'tween' }}
+      >
+        Skills & <span>Experience</span></motion.h2>
 
       <div className="app__skills-container">
         <motion.div

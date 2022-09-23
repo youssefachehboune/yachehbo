@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { motion } from 'framer-motion';
 
 import { images } from '../../constants';
 import { AppWrap  } from '../../wrapper';
@@ -37,9 +38,17 @@ const Footer = () => {
 
   return (
     <>
-      <h2 className="head-text">Take a coffe & <span>chat with me</span></h2>
+      <motion.h2 className="head-text" 
+      whileInView={{ x: [-100, 1, 0], opacity: [0, 1] }}
+      transition={{ duration: 2, type: 'tween' }}
+      >
+      Take a coffe & <span>chat with me</span>
+      </motion.h2>
 
-      <div className="app__footer-cards">
+      <motion.div className="app__footer-cards" 
+      whileInView={{ y: [-100, 1, 0], opacity: [0, 1] }}
+      transition={{ duration: 2, type: 'tween' }}
+      >
         <div className="app__footer-card">
           <img src={images.mail} alt="Email"/>
           <a href="mailto:achehboune949@gmail.com" title="mail" className="p-text">achehboune949@gmail.com</a>
@@ -48,10 +57,13 @@ const Footer = () => {
           <img src={images.whatsapp} alt="WhatsApp"/>
           <a href="https://wa.me/212609228921" target="_blank" title="WhatsApp" rel="noopener noreferrer" className="p-text">+212 (609) 228-921</a>
         </div>
-      </div>
+      </motion.div>
 
       {!isFormSubmitted ?
-      <div className="app__footer-form app__flex">
+      <motion.div className="app__footer-form app__flex"  
+      whileInView={{ y: [100, -1, 0], opacity: [0, 1] }}
+      transition={{ duration: 2, type: 'tween' }}
+      >
         <div className="app__flex">
           <input className="p-text" type="text" placeholder = "Your Name" name="name" value={name} onChange={handleChangeInput} />
         </div>
@@ -68,7 +80,7 @@ const Footer = () => {
           />
         </div>
         <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending' : 'Send Message'}</button>
-      </div>
+      </motion.div>
       : <div>
         <h3 className="head-text">Thank you for getting in touch!</h3>
       </div>
