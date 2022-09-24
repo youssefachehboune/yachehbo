@@ -8,6 +8,11 @@ export default {
                type:'string'
             },
             {
+                name:'date',
+                title:'Last Sync',
+                type:'string'
+            },
+            {
                 name:'c_name',
                 title:'Country Name',
                 type:'string'

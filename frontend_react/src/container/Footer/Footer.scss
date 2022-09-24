@@ -96,6 +96,10 @@
       &:hover {
         box-shadow: 0 0 25px var(--primary-color);
       }
+      &:focus-within{
+        transition: none;
+        border: 2px solid var(--secondary-color);
+      }
     }
 
     button {
@@ -122,4 +126,7 @@
         width: 100%;
         margin: 1rem 0;
       }
+}
+.error{
+  border: 2px solid #FF0000;
 }

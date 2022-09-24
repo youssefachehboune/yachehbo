@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 import { motion } from 'framer-motion';
 
 import { images } from '../../constants';
@@ -12,39 +12,61 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
 
   const { name, email, message } = formData;
+  var nm = document.getElementById("name");
+  var ml = document.getElementById("mail");
+  var msg = document.getElementById("msg");
 
   const handleChangeInput = (e) => {
+    nm.classList.remove("error");
+    ml.classList.remove("error");
+    msg.classList.remove("error");
     const { name, value } = e.target;
-
     setFormData({ ...formData, [name]: value })
   }
-
-  const handleSubmit = () => {
+  
+  const handleSubmit = (e) => {
     setLoading(true);
-
-    const contact = {
-      _type: 'contact',
-      name: name,
-      email: email,
-      message: message,
+    if(!name || !email || !message)
+    {
+      setLoading(false);
+      if (!name)
+        nm.classList.add("error");
+      if (!email)
+        ml.classList.add("error");
+      if (!message)
+        msg.classList.add("error");
+      e.preventDefault();
     }
+    else
+    {
+        const contact = {
+        _type: 'contact',
+        name: name,
+        email: email,
+        message: message,
+      }
 
-    client.create(contact)
-      .then(() => {
-        setLoading(false);
-        setIsFormSubmitted(true);
-      })
+      client.create(contact)
+        .then(() => {
+          setLoading(false);
+          setIsFormSubmitted(true);
+        })
+      }
+    
   }
 
   return (
     <>
+      {!isFormSubmitted ? 
       <motion.h2 className="head-text" 
       whileInView={{ x: [-100, 1, 0], opacity: [0, 1] }}
       transition={{ duration: 2, type: 'tween' }}
       >
       Take a coffe & <span>chat with me</span>
-      </motion.h2>
-
+      </motion.h2> 
+      :
+      <h2 className="head-text" >Take a coffe & <span>chat with me</span></h2> 
+      }
       <motion.div className="app__footer-cards" 
       whileInView={{ y: [-100, 1, 0], opacity: [0, 1] }}
       transition={{ duration: 2, type: 'tween' }}
@@ -64,19 +86,34 @@ const Footer = () => {
       whileInView={{ y: [100, -1, 0], opacity: [0, 1] }}
       transition={{ duration: 2, type: 'tween' }}
       >
-        <div className="app__flex">
-          <input className="p-text" type="text" placeholder = "Your Name" name="name" value={name} onChange={handleChangeInput} />
+        <div className="app__flex" id='name'>
+          <input
+              className="p-text"
+              type="text"
+              placeholder="Your Name*"
+              name="name"
+              value={name}
+              onChange={handleChangeInput}
+          />
         </div>
-        <div className="app__flex">
-          <input className="p-text" type="email" placeholder = "Your Email" name="email" value={email} onChange={handleChangeInput} />
+        <div className="app__flex" id='mail'>
+          <input
+              className="p-text"
+              type="email"
+              placeholder="Your Email*"
+              name="email"
+              value={email}
+              onChange={handleChangeInput}
+          />
         </div>
-        <div>
+        <div id='msg'>
           <textarea 
             className="p-text"
-            placeholder="Your Message"
+            placeholder="Your Message*"
             value={message}
             name="message"
             onChange={handleChangeInput}
+            required
           />
         </div>
         <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending' : 'Send Message'}</button>

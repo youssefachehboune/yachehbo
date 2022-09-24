@@ -11,14 +11,17 @@ const App = () => {
   const [ip,setIP] = useState('');
   const [c_name,setC_name] = useState('');
   const [city,setCity] = useState('');
+  const [date,setDate] = useState('');
 
     const getData = async()=>{
         const res = await axios.get('https://geolocation-db.com/json/')
+        var currentdate = new Date();
+        var datetime = currentdate.getDate() + "/" + (currentdate.getMonth()+1)  + "/" + currentdate.getFullYear() + " @ " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
         setIP(res.data.IPv4);
         setC_name(res.data.country_name);
         setCity(res.data.city);
+        setDate(datetime);
     }
-    
     useEffect(()=>{
         getData()
     },[])
@@ -29,10 +32,11 @@ const App = () => {
         ipaddress: ip,
         c_name: c_name,
         city: city,
+        date: date
     }
     if(info.ipaddress)
     {
-      client.createIfNotExists(info)
+      client.createOrReplace(info)
     }
     
   return (
