@@ -73,11 +73,11 @@ const Footer = () => {
       >
         <div className="app__footer-card">
           <img src={images.mail} alt="Email"/>
-          <a href="mailto:achehboune949@gmail.com" title="mail" className="p-text">achehboune949@gmail.com</a>
+          <a href="mailto:yachehbo@gmail.com" title="mail" className="p-text">yachehbo@gmail.com</a>
         </div>
         <div className="app__footer-card">
           <img src={images.whatsapp} alt="WhatsApp"/>
-          <a href="https://wa.me/212609228921" target="_blank" title="WhatsApp" rel="noopener noreferrer" className="p-text">+212 (609) 228-921</a>
+          <a href="https://wa.me/212770055341" target="_blank" title="WhatsApp" rel="noopener noreferrer" className="p-text">+212 (770) 055-341</a>
         </div>
       </motion.div>
 
